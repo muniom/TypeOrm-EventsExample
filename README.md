@@ -1,4 +1,4 @@
-# Test TypeORM case with relations
+# TypeORM relations playground
 # Cloned from Umed Khudoiberdiev's "Example how to use TypeORM with TypeScript"
 
 1. clone repository 

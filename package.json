@@ -1,7 +1,7 @@
 {
-  "name": "typeorm-typescript-events-example",
+  "name": "typeorm-relations-playground",
   "version": "0.0.1",
-  "description": "Test TypeORM case with relations.",
+  "description": "TypeORM playground with relations.",
   "license": "MIT",
   "readmeFilename": "README.md",
   "author": {
