@@ -1,5 +1,5 @@
-﻿import { Table, PrimaryColumn, PrimaryGeneratedColumn, Column, RelationId } from "typeorm";
-import { ManyToOne, OneToMany } from "typeorm";
+﻿import { Table, PrimaryColumn, PrimaryGeneratedColumn, Column, JoinColumn, RelationId } from "typeorm";
+import { ManyToOne, OneToMany, OneToOne } from "typeorm";
 
 import { Member } from './member';
 import { Event } from './event';
@@ -13,30 +13,33 @@ export class EventGuest {
 	} 
 	 
 
-	/* Event Relation 
+	/* Event Relation
 	//@ManyToOne(type => Event, event => event.eventId, { // Error: Relation with property name eventId in EventGuest entity was not found
 	@ManyToOne(type => Event, event => event.guests, { // 
 	})
-	event: Event;*/
+	event: Event; */
 	
 	/* Member Relation 
-	@ManyToOne(type => Member, member => member.memberId, {
+	@OneToOne(type => Member, member => member.memberId, {
 	})
+	@JoinColumn()
 	member: Member;*/
 	
 
 	/* MemberId */
-	@Column({})
-	/*@OneToMany(type => Member, member => member.memberId, { // Error: ER_CANT_CREATE_TABLE: Can't create table
-	})*/
+	//@Column({})
+	@OneToOne(type => Member, member => member.memberId, { // Error: ER_CANT_CREATE_TABLE: Can't create table
+	})
+	@JoinColumn()
 	memberId: number;
 
-	/* Event Id*/
-	@Column({})
-	@RelationId((event: Event) => event.eventId) // ? 
-	/*@OneToMany(type => Event, event => event.eventId, { // Error: Relation with property name eventId in EventGuest entity was not found
+	/* Event Id */
+	//@Column({})
+	//@RelationId((event: Event) => event.eventId) // ? 
+	@ManyToOne(type => Event, event => event.eventId, { // Error: Relation with property name eventId in EventGuest entity was not found
 		//primary: true
-	})*/
+	})
+	@JoinColumn()
 	eventId: number;
 
 	/* Rel. Id */
